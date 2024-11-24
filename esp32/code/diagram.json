@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Rafael Santiago da Silva",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": 209.8, "left": -50.4, "attrs": {} },
+    { "type": "wokwi-breadboard-half", "id": "bb2", "top": 189, "left": 146.8, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 249.6,
+      "left": -215.96,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -146,
+      "left": -86.1,
+      "attrs": { "columns": "3" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 243.14,
+      "left": 173.03,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:12", "bb1:4b.g", "green", [ "h-57.45", "v-192", "h210.9", "v96" ] ],
+    [ "esp:13", "bb1:5b.g", "green", [ "h-47.85", "v-201.6", "h192", "v96", "h67.2" ] ],
+    [ "esp:14", "bb1:6b.g", "green", [ "h-38.25", "v-163.2", "h172.8", "v96", "h86.4" ] ],
+    [ "esp:15", "bb1:7b.g", "green", [ "h19.2", "v-57.6", "h115.2" ] ],
+    [ "esp:32", "bb1:8t.d", "green", [ "h-28.65", "v-105.6", "h153.6", "v115.2", "h124.8" ] ],
+    [
+      "esp:33",
+      "bb1:9t.d",
+      "green",
+      [ "h-19.05", "v-105.6", "h134.4", "v115.2", "h134.4", "v-105.6" ]
+    ],
+    [ "keypad1:R1", "bb1:4b.f", "green", [ "v0" ] ],
+    [ "keypad1:R2", "bb1:5b.f", "green", [ "v0" ] ],
+    [ "keypad1:R3", "bb1:6b.f", "green", [ "v0" ] ],
+    [ "keypad1:R4", "bb1:7b.f", "green", [ "v0" ] ],
+    [ "keypad1:C1", "bb1:8t.c", "green", [ "v0" ] ],
+    [ "keypad1:C2", "bb1:9t.c", "green", [ "v0" ] ],
+    [ "keypad1:C3", "bb1:10t.c", "green", [ "v0" ] ],
+    [ "esp:25", "bb1:10t.d", "green", [ "h-9.45", "v-105.6" ] ],
+    [ "esp:5V", "bb2:tp.1", "red", [ "h-9.45", "v28.8", "h153.6", "v-76.8" ] ],
+    [ "esp:GND.3", "bb2:tn.1", "black", [ "h9.6", "v67.2" ] ],
+    [ "bb2:tn.4", "bb2:5t.a", "black", [ "v0" ] ],
+    [ "bb2:tp.5", "bb2:6t.a", "red", [ "v0" ] ],
+    [ "bb2:8t.a", "esp:21", "gold", [ "h-105.6", "v86.4" ] ],
+    [ "bb2:7t.a", "esp:22", "white", [ "h-76.8", "v57.6" ] ],
+    [ "oled1:GND", "bb2:5t.b", "", [ "$bb" ] ],
+    [ "oled1:VCC", "bb2:6t.b", "", [ "$bb" ] ],
+    [ "oled1:SCL", "bb2:7t.b", "", [ "$bb" ] ],
+    [ "oled1:SDA", "bb2:8t.b", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}
