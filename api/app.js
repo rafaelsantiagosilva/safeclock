@@ -18,7 +18,7 @@ app.use(employeeRouter);
 app.use(employeeAttendanceRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.listen(process.env.API_PORT | 3333, () => {
+app.listen(process.env.API_PORT | 3333, '0.0.0.0', () => {
   const apiUrl = `http://${process.env.API_HOST}:${process.env.API_PORT}`;
   const UTC_DATE = Date.now();
   console.log(`> Server is running on ${apiUrl}`);
